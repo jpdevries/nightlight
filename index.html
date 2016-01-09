@@ -3,70 +3,15 @@
   <head>
     <title>Night Light</title>
     <style type="text/css">
-      body {
-        transition:background-color 0.4s ease-out;
-        background:rgb(254,254,253);
-        text-align:center;
-      }
-      a {
-        color:currentColor;
-      }
-      #lightbulb {
-        max-width:100vw;
-        max-height:100vh;
-        margin:0 auto;
-
-        transition:opacity 0.4s ease-out;
-        opacity:1;
-      }
-      .off #lightbulb {
-         opacity:0.24;
-         -webkit-filter:grayscale(100%);
-         filter:grayscale(100%);
-      }
-
-      #glow {
-        transition:opacity 0.2s ease-in-out;
-      }
-
-      .off {
-        background:black;
-        color:white;
-      }
-
-      .off #glow {opacity:0}
+      /* add your CSS here */
     </style>
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        var threshold = document.querySelector('input[name="lux"]'),
-        lastLux = parseInt(threshold.value);
-
-        document.addEventListener('click',function(e){
-          document.body.classList.toggle('off');
-        });
-
-        threshold.addEventListener('change',function(e){
-          handleDeviceLightChange(lastLux);
-        });
-
-        window.addEventListener('devicelight', function(e) { // http://www.girliemac.com/blog/2014/01/12/luminosity/
-          var lux = e.value;
-          handleDeviceLightChange(lux);
-          lastLux = lux;
-        });
-
-        function handleDeviceLightChange(lux) {
-          if(lux > parseInt(threshold.value)) { // dim
-            document.body.classList.add('off');
-          } else {
-            document.body.classList.remove('off');
-          }
-        }
-      });
+      /* add your JavaScript here */
     </script>
   </head>
   <body class="off">
     <div>
+      <!-- use this SVG art or replace it with your own -->
       <svg version="1.1" id="lightbulb" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       	 viewBox="-281 331 48 48" style="enable-background:new -281 331 48 48;" xml:space="preserve" class="on">
          <title>This light will automatically turn on in dimly lit environments.</title>
@@ -319,22 +264,6 @@
       	</g>
       </g>
       </svg>
-    </div>
-    <div style="text-align:center;line-height:1.6em">
-        <p>
-            <a href="http://www.thinkful.com">Brought to you by Thinkful</a><br>
-            <a href="http://www.girliemac.com/blog/2014/01/12/luminosity/">Luminosity Code by Tomomi Imura</a><br>
-            <a href="http://devries.jp">Scripted by JP&nbsp;DeVries</a>
-        </p>
-        <footer>
-          <noscript>
-            <p>Please enable JavaScript to experience this interactive animation.</p>
-          </noscript>
-          <form>
-            <label for="lux">Lux</label>
-            <input name="lux" type="range" min="20" max="1000" step="1" value="25">
-          </form>
-        </footer>
     </div>
   </body>
 </html>
